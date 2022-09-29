@@ -1,5 +1,4 @@
 import axios from "axios";
-import React, {useState} from "react";
 
 const api = axios.create({
 	baseURL: "https://deckofcardsapi.com/api/deck/",
@@ -31,6 +30,5 @@ async function DrawCard(deckId) {
 	const {value, image} = cards[0];
 	return {deckId, value, image};
 }
-
 
 export default DrawCard;

@@ -1,0 +1,28 @@
+//import {useEffect, useState} from "react";
+/*
+function ImportCards() {
+	function loadDeckId() {
+		fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+			.then((response) => response.json())
+			.then((data) => setDeckId(data.deck_id));
+	}
+	async function loadDeckOfCards() {
+		await fetch(
+			"https://www.deckofcardsapi.com/api/deck/",
+			{deckId},
+			"/draw/?count=2"
+		)
+			.then((response) => response.json())
+			.then((data) => setDeckOfCards(data.cards));
+	}
+	const [deckId, setDeckId] = useState([]);
+	const [deckOfCards, setDeckOfCards] = useState([]);
+	useEffect(() => {
+		loadDeckId();
+	}, []);
+	useEffect(() => {
+		loadDeckOfCards();
+	}, []);
+
+	return ImportCards();
+}*/

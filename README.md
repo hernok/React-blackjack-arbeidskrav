@@ -1,5 +1,7 @@
 //Fetch deck
 
+Push Fethced data into array
+
 //Display single card
 
 Display multiple diffrent cards
