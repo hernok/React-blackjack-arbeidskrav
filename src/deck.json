@@ -1,210 +1,314 @@
 [
 	{
-		"suit": "hearts",
-		"value": 2
+		"symbol": "hearts",
+		"value": 2,
+		"name": "2",
+		"img": "/src/resources/images/cards/2-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 3
+		"symbol": "hearts",
+		"value": 3,
+		"name": "3",
+		"img": "/src/resources/images/cards/3-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 4
+		"symbol": "hearts",
+		"value": 4,
+		"name": "4",
+		"img": "/src/resources/images/cards/4-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 5
+		"symbol": "hearts",
+		"value": 5,
+		"name": "5",
+		"img": "/src/resources/images/cards/5-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 6
+		"symbol": "hearts",
+		"value": 6,
+		"name": "6",
+		"img": "/src/resources/images/cards/6-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 7
+		"symbol": "hearts",
+		"value": 7,
+		"name": "7",
+		"img": "/src/resources/images/cards/7-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 8
+		"symbol": "hearts",
+		"value": 8,
+		"name": "8",
+		"img": "/src/resources/images/cards/8-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 9
+		"symbol": "hearts",
+		"value": 9,
+		"name": "9",
+		"img": "/src/resources/images/cards/9-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": 10
+		"symbol": "hearts",
+		"value": 10,
+		"name": "10",
+		"img": "/src/resources/images/cards/10-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": "J"
+		"symbol": "hearts",
+		"value": 10,
+		"name": "J",
+		"img": "/src/resources/images/cards/J-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": "Q"
+		"symbol": "hearts",
+		"value": 10,
+		"name": "Q",
+		"img": "/src/resources/images/cards/Q-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": "K"
+		"symbol": "hearts",
+		"value": 10,
+		"name": "K",
+		"img": "/src/resources/images/cards/K-H.png"
 	},
 	{
-		"suit": "hearts",
-		"value": "A"
+		"symbol": "hearts",
+		"value": 11,
+		"name": "A",
+		"img": "/src/resources/images/cards/A-H.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 2
+		"symbol": "diamonds",
+		"value": 2,
+		"name": "2",
+		"img": "/src/resources/images/cards/2-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 3
+		"symbol": "diamonds",
+		"value": 3,
+		"name": "3",
+		"img": "/src/resources/images/cards/3-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 4
+		"symbol": "diamonds",
+		"value": 4,
+		"name": "4",
+		"img": "/src/resources/images/cards/4-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 5
+		"symbol": "diamonds",
+		"value": 5,
+		"name": "5",
+		"img": "/src/resources/images/cards/5-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 6
+		"symbol": "diamonds",
+		"value": 6,
+		"name": "6",
+		"img": "/src/resources/images/cards/6-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 7
+		"symbol": "diamonds",
+		"value": 7,
+		"name": "7",
+		"img": "/src/resources/images/cards/7-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 8
+		"symbol": "diamonds",
+		"value": 8,
+		"name": "8",
+		"img": "/src/resources/images/cards/8-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 9
+		"symbol": "diamonds",
+		"value": 9,
+		"name": "9",
+		"img": "/src/resources/images/cards/9-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": 10
+		"symbol": "diamonds",
+		"value": 10,
+		"name": "10",
+		"img": "/src/resources/images/cards/10-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": "J"
+		"symbol": "diamonds",
+		"value": 10,
+		"name": "J",
+		"img": "/src/resources/images/cards/J-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": "Q"
+		"symbol": "diamonds",
+		"value": 10,
+		"name": "Q",
+		"img": "/src/resources/images/cards/Q-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": "K"
+		"symbol": "diamonds",
+		"value": 10,
+		"name": "K",
+		"img": "/src/resources/images/cards/K-D.png"
 	},
 	{
-		"suit": "diamonds",
-		"value": "A"
+		"symbol": "diamonds",
+		"value": 11,
+		"name": "A",
+		"img": "/src/resources/images/cards/A-D.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 2
+		"symbol": "clubs",
+		"value": 2,
+		"name": "2",
+		"img": "/src/resources/images/cards/2-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 3
+		"symbol": "clubs",
+		"value": 3,
+		"name": "3",
+		"img": "/src/resources/images/cards/3-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 4
+		"symbol": "clubs",
+		"value": 4,
+		"name": "4",
+		"img": "/src/resources/images/cards/4-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 5
+		"symbol": "clubs",
+		"value": 5,
+		"name": "5",
+		"img": "/src/resources/images/cards/5-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 6
+		"symbol": "clubs",
+		"value": 6,
+		"name": "6",
+		"img": "/src/resources/images/cards/6-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 7
+		"symbol": "clubs",
+		"value": 7,
+		"name": "7",
+		"img": "/src/resources/images/cards/7-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 8
+		"symbol": "clubs",
+		"value": 8,
+		"name": "8",
+		"img": "/src/resources/images/cards/8-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 9
+		"symbol": "clubs",
+		"value": 9,
+		"name": "9",
+		"img": "/src/resources/images/cards/9-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": 10
+		"symbol": "clubs",
+		"value": 10,
+		"name": "10",
+		"img": "/src/resources/images/cards/10-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": "J"
+		"symbol": "clubs",
+		"value": 10,
+		"name": "J",
+		"img": "/src/resources/images/cards/J-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": "Q"
+		"symbol": "clubs",
+		"value": 10,
+		"name": "Q",
+		"img": "/src/resources/images/cards/Q-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": "K"
+		"symbol": "clubs",
+		"value": 10,
+		"name": "K",
+		"img": "/src/resources/images/cards/K-C.png"
 	},
 	{
-		"suit": "clubs",
-		"value": "A"
+		"symbol": "clubs",
+		"value": 11,
+		"name": "A",
+		"img": "/src/resources/images/cards/A-C.png"
 	},
 	{
-		"suit": "spades",
-		"value": 2
+		"symbol": "spades",
+		"value": 2,
+		"name": "2",
+		"img": "/src/resources/images/cards/2-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 3
+		"symbol": "spades",
+		"value": 3,
+		"name": "3",
+		"img": "/src/resources/images/cards/3-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 4
+		"symbol": "spades",
+		"value": 4,
+		"name": "4",
+		"img": "/src/resources/images/cards/4-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 5
+		"symbol": "spades",
+		"value": 5,
+		"name": "5",
+		"img": "/src/resources/images/cards/5-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 6
+		"symbol": "spades",
+		"value": 6,
+		"name": "6",
+		"img": "/src/resources/images/cards/6-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 7
+		"symbol": "spades",
+		"value": 7,
+		"name": "7",
+		"img": "/src/resources/images/cards/7-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 8
+		"symbol": "spades",
+		"value": 8,
+		"name": "8",
+		"img": "/src/resources/images/cards/8-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 9
+		"symbol": "spades",
+		"value": 9,
+		"name": "9",
+		"img": "/src/resources/images/cards/9-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": 10
+		"symbol": "spades",
+		"value": 10,
+		"name": "10",
+		"img": "/src/resources/images/cards/10-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": "J"
+		"symbol": "spades",
+		"value": 10,
+		"name": "J",
+		"img": "/src/resources/images/cards/J-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": "Q"
+		"symbol": "spades",
+		"value": 10,
+		"name": "Q",
+		"img": "/src/resources/images/cards/Q-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": "K"
+		"symbol": "spades",
+		"value": 10,
+		"name": "K",
+		"img": "/src/resources/images/cards/K-S.png"
 	},
 	{
-		"suit": "spades",
-		"value": "A"
+		"symbol": "spades",
+		"value": 11,
+		"name": "A",
+		"img": "/src/resources/images/cards/A-S.png"
 	}
 ]
