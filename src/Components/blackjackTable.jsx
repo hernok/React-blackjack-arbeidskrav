@@ -148,7 +148,13 @@ function BlackjackTable() {
 	totDealerScore = totalDealerScore;
 
 	// Checks if the player has not gone bust
-	if (totPlayerScore < totDealerScore && totDealerScore < 21 && stay === true) {
+	if (totPlayerScore > 21) {
+		//setStay(() => true);
+	} else if (
+		totPlayerScore < totDealerScore &&
+		totDealerScore < 21 &&
+		stay === true
+	) {
 		//setStay(() => true);
 		victor = "YOU LOSE!";
 	} else if (totDealerScore > 21 && totPlayerScore <= 21 && stay === true) {
