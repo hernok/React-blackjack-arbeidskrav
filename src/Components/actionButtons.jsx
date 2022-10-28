@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import HandValues from "./blackjackTable";
 
 const ButtonWrapper = styled.div`
 	display: flex;
@@ -9,15 +8,43 @@ const ButtonWrapper = styled.div`
 	margin-top: 32px;
 `;
 
-const ActionButton = () => (
-	<ButtonWrapper>
-		<button name="hit" onClick={HandValues}>
-			Hit
-		</button>
-		<button name="stay" onClick={HandValues}>
-			Stay
-		</button>
-	</ButtonWrapper>
-);
+const ActionButtons = ({
+	handleHit,
+	handleStay,
+	handleReset,
+	handleBegin,
+	toggleHitBtn,
+	toggleBeginBtn,
+	notStarted,
+	dealerDraw,
+}) => {
+	return (
+		<div>
+			<ButtonWrapper>
+				<button name="hit" disabled={toggleHitBtn} onClick={() => handleHit()}>
+					Hit
+				</button>
 
-export default ActionButton;
+				<button name="stay" disabled={notStarted} onClick={() => handleStay()}>
+					Stay
+				</button>
+				<button
+					name="reset"
+					disabled={notStarted}
+					onClick={() => handleReset()}
+				>
+					Reset
+				</button>
+				<button
+					name="begin"
+					disabled={toggleBeginBtn}
+					onClick={() => handleBegin()}
+				>
+					Begin
+				</button>
+			</ButtonWrapper>
+		</div>
+	);
+};
+
+export default ActionButtons;

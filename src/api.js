@@ -1,34 +1,20 @@
-import axios from "axios";
+import {useEffect, useState} from "react";
 
-const api = axios.create({
-	baseURL: "https://deckofcardsapi.com/api/deck/",
-});
+export const ImportCards = ({}) => {
+	const [deckId, setDeckId] = useState(null);
+	const [deckOfCards, setDeckOfCards] = useState([]);
 
-// Requests create deck from api
-export const createStack = async () => {
-	const {data} = await api.get("new/shuffle/", {
-		params: {
-			stack_count: 1,
-		},
-	});
-	console.log(data);
-	// Requests a card from requested deck
-	const {deck_id: deckId} = data;
-	const cardRes = await DrawCard(deckId);
-	return cardRes;
+	//Loads on mount and every time the empty array at the end changes.
+	useEffect(() => {
+		fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+			.then((response) => response.json())
+			.then((data) => setDeckId(data.deck_id));
+	}, []);
+	console.log("deckId from api", deckId);
+	//Loads when the value of deckId changes.
+	useEffect(() => {
+		fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=52`)
+			.then((response) => response.json())
+			.then((data) => setDeckOfCards(data.cards));
+	}, [deckId]);
 };
-
-async function DrawCard(deckId) {
-	const {data} = await api.get(`${deckId}/draw/`, {
-		//pushes into new array, named cards[]
-		params: {
-			count: 2,
-		},
-	});
-	const {cards} = data;
-	//cards[] displays the new card array
-	const {value, image} = cards[0];
-	return {deckId, value, image};
-}
-
-export default DrawCard;

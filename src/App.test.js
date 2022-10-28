@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import {render, screen} from "@testing-library/react";
+import App from "./App";
+  
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("parse length of deck", () => {
+	render(<App />);
+	const deckOfCardsLength = screen.getByDisplayValue("deckOfCards");
+	expect(deckOfCardsLength.length).toBeGreaterThan(1);
 });

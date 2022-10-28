@@ -1,18 +1,19 @@
 //import cards from "./deck.json";
-import React from "react";
-import {Header, Layout} from "./Layout-components";
+import React, {useState, useEffect} from "react";
+import {Header, Layout} from "./Components/Layout-components";
 import BlackjackTable from "./Components/blackjackTable";
+import "./App.css";
 
-function App() {
-	
+
+export const App = () => {
+	// useEffect(() => {
+	// 	ImportCards();
+	// }, []);
+
 	return (
 		<div className="App">
 			<Header>Blackjack</Header>
-			<Layout>
-				<BlackjackTable />
-			</Layout>
+			<BlackjackTable />
 		</div>
 	);
-}
-
-export default App;
+};

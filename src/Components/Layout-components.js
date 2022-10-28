@@ -14,6 +14,7 @@ export const Layout = styled.div`
     align-items: center
     justify-content: center;
     background-color:green;
+	width: 100%;
 `;
 
 export const CardStyle = styled.div`
