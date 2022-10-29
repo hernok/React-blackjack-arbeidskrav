@@ -10,13 +10,15 @@ function BlackjackTable() {
 	const [deckOfCards, setDeckOfCards] = useState([]);
 	const [dealerHand, setDealerHand] = useState([]);
 	const [playerHand, setPlayerHand] = useState([]);
-	const [reset, setReset] = useState(false);
 	const [stay, setStay] = useState(false);
 	const [toggleBeginBtn, setToggleBeginBtn] = useState(true);
 	const [toggleResetBtn, setToggleResetBtn] = useState(true);
 	const [toggleHitBtn, setToggleHitBtn] = useState(true);
 	const [toggleStayBtn, setToggleStayBtn] = useState(true);
 
+	// Skulle gjærne brukt useState() for disse arrayene, men jeg fikk infinite loop bugs når jeg prøvde å sette staten i if statements.
+	// Klarte ikke å finne grunnen.
+	// Hvis jeg hadde funnet en løsning hadde jeg greid å bruke useContext og function components for å regne ut hands.
 	let results = [];
 	let totDealerScore = [];
 	let tempDealerScore = [];
@@ -61,9 +63,18 @@ function BlackjackTable() {
 		setToggleBeginBtn(false);
 	}, [deckOfCards]);
 
+	// Runs handleStay when the player is bust to disable buttons
+	useEffect(() => {
+		const stayOnBust = () => {
+			if (totPlayerScore > 21 && stay === false) {
+				handleStay();
+			}
+		};
+		stayOnBust();
+	}, [playerHand]);
+
 	// Deals starting hands
 	const handleBegin = () => {
-		setReset(false);
 		setToggleResetBtn(false);
 		setToggleHitBtn(false);
 		setToggleStayBtn(false);
@@ -99,16 +110,13 @@ function BlackjackTable() {
 		setStay(true);
 		setToggleHitBtn(true);
 		setToggleStayBtn(true);
-		if (totalDealerScore < totalPlayerScore && totalDealerScore < 21) {
-			dealerDraw();
-		}
 	};
 
 	// The reset handler, clears both the dealer and the players hands, and sets every button to their play stage
 	const handleReset = () => {
 		setPlayerHand([]);
 		setDealerHand([]);
-		setReset(true);
+
 		setToggleResetBtn(true);
 		setToggleHitBtn(false);
 		setToggleBeginBtn(false);
@@ -165,6 +173,13 @@ function BlackjackTable() {
 	totPlayerScore = totalPlayerScore;
 	totDealerScore = totalDealerScore;
 
+	// Subtracts 10 points from the player score if the player has an ace and a higher score than 21
+	if (totalPlayerScore > 21) {
+		tempPlayerScore.forEach((value) => {
+			if (value === 11) totPlayerScore = totPlayerScore - 10;
+		});
+	}
+
 	// Checks if the player has not gone bust
 	if (
 		(totPlayerScore < totDealerScore &&
@@ -173,27 +188,21 @@ function BlackjackTable() {
 		totPlayerScore > 21
 	) {
 		results = "YOU LOSE!";
-		// Her skulle jeg gjerne brukt
-		// setToggleHitBtn(true);
-		// For å skru av hit button, men useState gir evig loop.
-		// Det er grunnen til at jeg bruker variabler på linje 20-24, det ble en evig loop da jeg prøvde
-		// Prøvde også setState(() => (value))
-	} else if (totDealerScore > 21 && totPlayerScore <= 21 && stay === true) {
+	} else if (
+		(totDealerScore > 21 && totPlayerScore <= 21 && stay === true) ||
+		(totDealerScore < totPlayerScore && stay === true && totDealerScore >= 17)
+	) {
 		results = "YOU WIN!";
 	} else if (
 		totDealerScore === totPlayerScore &&
 		stay === true &&
-		totPlayerScore !== 0
+		totPlayerScore === 21
 	) {
 		results = "DRAW!";
 	}
 
 	// Checks if the dealer can draw cards
-	if (
-		totPlayerScore > totDealerScore &&
-		totPlayerScore <= 21 &&
-		stay === true
-	) {
+	if (totDealerScore < 17 && totPlayerScore <= 21 && stay === true) {
 		dealerDraw();
 	}
 
@@ -235,8 +244,5 @@ function BlackjackTable() {
 		</div>
 	);
 }
-//
-//<PlayerScore playerHand={playerHand} playerScore={playerScore} />
-//<DealerScore dealerHand={dealerHand} dealerScore={dealerScore} />
 
 export default BlackjackTable;

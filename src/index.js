@@ -10,20 +10,4 @@ root.render(
 		<App />
 	</React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-/*setCardValue = (deck) => {
-	deck.forEach((card) => {
-		if (card.value === "J" || card.value === "Q" || card.value === "K") {
-			card.value = 10;
-		} else if (card.value === "A") {
-			card.value = 11;
-		} else {
-			card.value = parseInt(card.value);
-		}
-	});
-};
-*/
