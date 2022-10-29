@@ -15,8 +15,8 @@ const ActionButtons = ({
 	handleBegin,
 	toggleHitBtn,
 	toggleBeginBtn,
-	notStarted,
-	dealerDraw,
+	toggleResetBtn,
+	toggleStayBtn,
 }) => {
 	return (
 		<div>
@@ -25,12 +25,16 @@ const ActionButtons = ({
 					Hit
 				</button>
 
-				<button name="stay" disabled={notStarted} onClick={() => handleStay()}>
+				<button
+					name="stay"
+					disabled={toggleStayBtn}
+					onClick={() => handleStay()}
+				>
 					Stay
 				</button>
 				<button
 					name="reset"
-					disabled={notStarted}
+					disabled={toggleResetBtn}
 					onClick={() => handleReset()}
 				>
 					Reset

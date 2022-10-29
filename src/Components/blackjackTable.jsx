@@ -13,10 +13,11 @@ function BlackjackTable() {
 	const [reset, setReset] = useState(false);
 	const [stay, setStay] = useState(false);
 	const [toggleBeginBtn, setToggleBeginBtn] = useState(true);
-	const [notStarted, setNotStarted] = useState(true);
+	const [toggleResetBtn, setToggleResetBtn] = useState(true);
 	const [toggleHitBtn, setToggleHitBtn] = useState(true);
+	const [toggleStayBtn, setToggleStayBtn] = useState(true);
 
-	let victor = [];
+	let results = [];
 	let totDealerScore = [];
 	let tempDealerScore = [];
 	let totPlayerScore = [];
@@ -24,35 +25,49 @@ function BlackjackTable() {
 
 	//Loads on mount and every time the [] at the end changes value.
 	useEffect(() => {
-		fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-			.then((response) => response.json())
-			.then((data) => setDeckId(data.deck_id));
+		const fetchId = async () => {
+			await fetch(
+				"https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+			)
+				.then((response) => response.json())
+				.then((data) => setDeckId(data.deck_id));
+		};
+		try {
+			fetchId();
+		} catch (err) {
+			console.error(err);
+		}
 	}, []);
 
 	//Loads when the value of deckId changes.
+	//Crashes when deckOfCards array no longer has any cards.
 	useEffect(() => {
-		fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=52`)
-			.then((response) => response.json())
-			.then((data) => setDeckOfCards(data.cards));
+		const fetchCards = async () => {
+			await fetch(
+				`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=52`
+			)
+				.then((response) => response.json())
+				.then((data) => setDeckOfCards(data.cards));
+		};
+		try {
+			fetchCards();
+		} catch (err) {
+			console.error(err);
+		}
 	}, [deckId]);
-
-	useEffect(() => {
-		fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
-			.then((response) => response.json())
-			.then((data) => setDeckId(data.deck_id));
-	}, [reset]);
 
 	// Enables the begin button after the api is fetched
 	useEffect(() => {
 		setToggleBeginBtn(false);
-	}, [deckId]);
+	}, [deckOfCards]);
 
 	// Deals starting hands
 	const handleBegin = () => {
 		setReset(false);
-		setToggleBeginBtn(true);
-		setNotStarted(false);
+		setToggleResetBtn(false);
 		setToggleHitBtn(false);
+		setToggleStayBtn(false);
+		setToggleBeginBtn(true);
 		setPlayerHand([deckOfCards[0], deckOfCards[1]]);
 		setDealerHand([deckOfCards[2]]);
 		setDeckOfCards((oldDeck) => {
@@ -61,7 +76,7 @@ function BlackjackTable() {
 		});
 	};
 
-	//Serves the player a card and removes the card from the deck
+	// Serves the player a card and removes the card from the deck
 	const handleHit = () => {
 		setPlayerHand((oldPlayerHand) => [...oldPlayerHand, deckOfCards[0]]);
 		setDeckOfCards((oldDeck) => {
@@ -70,7 +85,7 @@ function BlackjackTable() {
 		});
 	};
 
-	//Serves the dealer a card and removes the card from the deck
+	// Serves the dealer a card and removes the card from the deck
 	const dealerDraw = () => {
 		setDealerHand((oldDealerHand) => [...oldDealerHand, deckOfCards[0]]);
 		setDeckOfCards((oldDeck) => {
@@ -79,26 +94,28 @@ function BlackjackTable() {
 		});
 	};
 
-	//The stay handler, disables the hit and stay buttons as well as dealing the dealer a card
+	// The stay handler, disables the hit and stay buttons as well as dealing the dealer a card
 	const handleStay = () => {
 		setStay(true);
 		setToggleHitBtn(true);
+		setToggleStayBtn(true);
 		if (totalDealerScore < totalPlayerScore && totalDealerScore < 21) {
 			dealerDraw();
 		}
 	};
 
-	//The reset handler, clears both the dealer and the players hands, and sets every button to their play stage
+	// The reset handler, clears both the dealer and the players hands, and sets every button to their play stage
 	const handleReset = () => {
 		setPlayerHand([]);
 		setDealerHand([]);
-		setToggleHitBtn(true);
-		setToggleBeginBtn(false);
 		setReset(true);
+		setToggleResetBtn(true);
+		setToggleHitBtn(false);
+		setToggleBeginBtn(false);
+		setToggleStayBtn(false);
 		setStay(false);
-		setNotStarted(true);
 		handleBegin();
-		victor = [];
+		results = [];
 	};
 
 	// Converts the playcard values to numbers and pushes them into an array
@@ -116,6 +133,7 @@ function BlackjackTable() {
 		}
 		tempPlayerScore.push(card.value);
 	});
+
 	// Adds up all the numbers from the previous function
 	const totalPlayerScore = tempPlayerScore.reduce(
 		(previousValue, currentValue) => previousValue + currentValue,
@@ -148,21 +166,29 @@ function BlackjackTable() {
 	totDealerScore = totalDealerScore;
 
 	// Checks if the player has not gone bust
-	if (totPlayerScore > 21) {
-		//setStay(() => true);
-	} else if (
-		totPlayerScore < totDealerScore &&
-		totDealerScore < 21 &&
-		stay === true
+	if (
+		(totPlayerScore < totDealerScore &&
+			totDealerScore <= 21 &&
+			stay === true) ||
+		totPlayerScore > 21
 	) {
-		//setStay(() => true);
-		victor = "YOU LOSE!";
+		results = "YOU LOSE!";
+		// Her skulle jeg gjerne brukt
+		// setToggleHitBtn(true);
+		// For å skru av hit button, men useState gir evig loop.
+		// Det er grunnen til at jeg bruker variabler på linje 20-24, det ble en evig loop da jeg prøvde
+		// Prøvde også setState(() => (value))
 	} else if (totDealerScore > 21 && totPlayerScore <= 21 && stay === true) {
-		victor = "YOU WIN!";
-	} else if (totDealerScore === totPlayerScore && stay === true) {
-		victor = "DRAW!";
+		results = "YOU WIN!";
+	} else if (
+		totDealerScore === totPlayerScore &&
+		stay === true &&
+		totPlayerScore !== 0
+	) {
+		results = "DRAW!";
 	}
-	//Checks if the dealer can draw cards
+
+	// Checks if the dealer can draw cards
 	if (
 		totPlayerScore > totDealerScore &&
 		totPlayerScore <= 21 &&
@@ -179,12 +205,13 @@ function BlackjackTable() {
 				handleReset={handleReset}
 				handleBegin={handleBegin}
 				toggleBeginBtn={toggleBeginBtn}
-				notStarted={notStarted}
+				toggleResetBtn={toggleResetBtn}
+				toggleStayBtn={toggleStayBtn}
 				toggleHitBtn={toggleHitBtn}
 				dealerDraw={dealerDraw}
 			/>
 			<Layout>
-				<h1>{victor}</h1>
+				<h1>{results}</h1>
 			</Layout>
 			<Layout>
 				<h2>Dealer</h2>
