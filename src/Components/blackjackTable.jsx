@@ -16,7 +16,7 @@ function BlackjackTable() {
 	const [toggleHitBtn, setToggleHitBtn] = useState(true);
 	const [toggleStayBtn, setToggleStayBtn] = useState(true);
 
-	// Skulle gjærne brukt useState() for disse arrayene, men jeg fikk infinite loop bugs når jeg prøvde å sette staten i if statements.
+	// Skulle gjerne brukt useState() for disse arrayene, men jeg fikk infinite loop bugs når jeg prøvde å sette staten i if statements.
 	// Klarte ikke å finne grunnen.
 	// Hvis jeg hadde funnet en løsning hadde jeg greid å bruke useContext og function components for å regne ut hands.
 	let results = [];
